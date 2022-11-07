@@ -4,10 +4,10 @@ using System;
 
 namespace Library
 {
-    public class NodePerson : Node
+    public class NodePerson : Node, IComponent
     {
         
-        public Persona persona;
+        public Persona persona{get;}
         public override List<Node> children{get;set;}
 
         public NodePerson(Persona persona)
@@ -26,6 +26,11 @@ namespace Library
             {
                 return this.children.AsReadOnly();
             }
+        }
+
+        public void Accept(IVisitor visitante)
+        {
+            visitante.Visitor(this);
         }
     }
 }
