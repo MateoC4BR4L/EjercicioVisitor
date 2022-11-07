@@ -4,35 +4,14 @@ using System;
 
 namespace Library
 {
-    public class Node
+    public abstract class Node
     {
-        private int number;
 
-        private List<Node> children = new List<Node>();
+        public abstract List<Node> children {get;set;}
 
-        public int Number {
-            get
-            {
-                return this.number;
-            }
-        }
+        public abstract ReadOnlyCollection<Node> Children{get;}
 
-        public ReadOnlyCollection<Node> Children { 
-            get
-            {
-                return this.children.AsReadOnly();
-            }
-        }
-
-        public Node(int number)
-        {
-            this.number = number;
-        }
-
-        public void AddChildren(Node n)
-        {
-            this.children.Add(n);
-        }
+        public abstract void AddChildren(Node n);
         
     }
 }
